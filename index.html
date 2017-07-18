@@ -95,31 +95,54 @@ Sorry, your browser does not support inline SVG.
 <hr>
 <!--start table-->
 <div>
-	<table>
+	<table width="100%" border="1">
 		<tr>
-			<video width="320" height="240" autoplay>
+			<video width="400" height="240" controls autoplay>
   			<source src="movie.mp4" type="video/mp4">
   			<source src="movie.ogg" type="video/ogg">
   			Your browser does not support the video tag.
 			</video>
 		</tr>
 		<tr>
-			<video width="320" height="240" autoplay>
-  			<source src="movie.mp4" type="video/mp4">
-  			<source src="movie.ogg" type="video/ogg">
-  			Your browser does not support the video tag.
-			</video>
+			<iframe width="400" height="240" src="http://www.youtube.com/embed/7MZ4Nzy80CE?&autoplay=1&theme=light" frameborder="0" allowfullscreen></iframe>
 		</tr>
 		<tr>
-			<video width="320" height="240" autoplay>
-  			<source src="movie.mp4" type="video/mp4">
-  			<source src="movie.ogg" type="video/ogg">
-  			Your browser does not support the video tag.
-			</video>
+			<object data="images/car2.jpeg" style="margin-left: 10px" width="400" height="240"></object>
 		</tr>
 	</table>
 </div>
 <!--end table -->
+
+<!--contact us-->
+<table width="100%">
+	<tr>
+	<!--start form-->
+		<form action="" width="50%">
+			Name:<br>
+			<input type="text" name="" placeholder="John Doe"><br>
+			My Dream Ride:<br>
+				<select name="cars">
+			    <option value="volvo">Volvo</option>
+			    <option value="saab">Saab</option>
+			    <option value="fiat">Fiat</option>
+			    <option value="audi">Audi</option>
+				</select><br>
+			Am willing to Hire:<br>
+				<input type="radio" name="" value="Volvo">
+				<input type="radio" name="" value="Audi">
+				<input type="radio" name="" value="fiat">
+				<input type="radio" name="" value="Saab">
+				<br>
+			My Message:<br>
+				<textarea rows="10" cols="30"></textarea><br>
+			<input type="submit" name="" value="Submit"> 
+			Click <a href="">here</a> to see how far you are from our premises.
+		</form>
+	<!--end form-->
+	</tr>
+	<tr></tr>
+</table>
+<!-- end of contact us-->
 <!--map starts-->
 <div id="map" style="width:100%px;height:200px">
 	
