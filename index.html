@@ -120,7 +120,7 @@ Sorry, your browser does not support inline SVG.
 		<form action="" width="50%">
 			Name:<br>
 			<input type="text" name="" placeholder="John Doe"><br>
-			My Dream Ride:<br>
+			<!-- My Dream Ride:<br>
 				<select name="cars">
 			    <option value="volvo">Volvo</option>
 			    <option value="saab">Saab</option>
@@ -132,17 +132,120 @@ Sorry, your browser does not support inline SVG.
 				<input type="radio" name="" value="Audi">
 				<input type="radio" name="" value="fiat">
 				<input type="radio" name="" value="Saab">
-				<br>
+				<br> -->
 			My Message:<br>
 				<textarea rows="10" cols="30"></textarea><br>
 			<input type="submit" name="" value="Submit"> 
 			Click <a href="">here</a> to see how far you are from our premises.
+			
+
 		</form>
 	<!--end form-->
+
+<!--geolocation-->
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>
 	</tr>
 	<tr></tr>
 </table>
 <!-- end of contact us-->
+<!--drag and drop-->
+<style>
+#div1 {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<p>Drag the W3Schools image into the rectangle:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src="images/car2.jpeg" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+<!--end of drag and drop-->
+
+<!--web workers-->
+<p>Count numbers: <output id="result"></output></p>
+<button onclick="startWorker()">Start Worker</button> 
+<button onclick="stopWorker()">Stop Worker</button>
+
+<script>
+var w;
+
+function startWorker() {
+    if(typeof(Worker) !== "undefined") {
+        if(typeof(w) == "undefined") {
+            w = new Worker("demo_workers.js");
+        }
+        w.onmessage = function(event) {
+            document.getElementById("result").innerHTML = event.data;
+        };
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+    }
+}
+
+function stopWorker() { 
+    w.terminate();
+    w = undefined;
+}
+</script>
+<!--webworkers-->
+
+<!--SSE-->
+<h1>Getting server updates</h1>
+<div id="result"></div>
+
+<script>
+if(typeof(EventSource) !== "undefined") {
+    var source = new EventSource("demo_sse.php");
+    source.onmessage = function(event) {
+        document.getElementById("result").innerHTML += event.data + "<br>";
+    };
+} else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+}
+</script>
+<!--end SSE-->
+
 <!--map starts-->
 <div id="map" style="width:100%px;height:200px">
 	
